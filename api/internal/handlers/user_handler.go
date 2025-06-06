@@ -36,7 +36,7 @@ func (h *UserHandler) Register(c *gin.Context) {
 	user.Email = payload.Email
 	user.HashPassword(payload.Password)
 
-	if err := h.service.CreateUser(c, user); err != nil {
+	if err := h.service.CreateUser(c.Request.Context(), user); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -57,7 +57,7 @@ func (h *UserHandler) Login(c *gin.Context) {
 	}
 
 	// Get User by Email
-	user, err := h.service.GetUserByEmail(c, payload.Email)
+	user, err := h.service.GetUserByEmail(c.Request.Context(), payload.Email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -70,5 +70,11 @@ func (h *UserHandler) Login(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"data": user})
+	token, err := h.jwt.GenerateToken(user.ID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": token})
 }
