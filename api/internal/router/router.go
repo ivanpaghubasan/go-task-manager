@@ -10,7 +10,7 @@ import (
 )
 
 func SetupRouter(app *app.Application) http.Handler {
-	handler := handlers.New(app.Service)
+	handler := handlers.New(app.Service, app.JWTManager)
 
 	r := gin.Default()
 	v1Route := r.Group("/v1")

@@ -7,8 +7,8 @@ type Service struct {
 	Task *TaskService
 }
 
-func InitService(repo repository.Repository) Service {
-	return Service{
+func InitService(repo repository.Repository) *Service {
+	return &Service{
 		User: &UserService{repo},
 		Task: &TaskService{repo},
 	}

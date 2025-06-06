@@ -11,7 +11,7 @@ import (
 
 type Application struct {
 	Config     *config.Config
-	Service    service.Service
+	Service    *service.Service
 	JWTManager *auth.JWTManager
 }
 
