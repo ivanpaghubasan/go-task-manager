@@ -19,6 +19,7 @@ type Repository struct {
 	}
 	Task interface {
 		Create(ctx context.Context, task *model.Task) (*model.Task, error)
+		GetTask(ctx context.Context, taskID int) (*model.Task, error)
 	}
 }
 

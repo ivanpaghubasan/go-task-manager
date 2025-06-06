@@ -19,6 +19,9 @@ func SetupRouter(app *app.Application) http.Handler {
 
 		v1Route.POST("/auth/register", handler.User.Register)
 		v1Route.POST("/auth/login", handler.User.Login)
+
+		v1Route.POST("/tasks", handler.Task.CreateTask)
+		v1Route.GET("/tasks/:taskID", handler.Task.GetTask)
 	}
 	r.Run(fmt.Sprintf(":%s", app.Config.Port))
 	return r.Handler()
