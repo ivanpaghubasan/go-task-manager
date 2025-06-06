@@ -8,9 +8,10 @@ import (
 )
 
 type Config struct {
-	Env   string
-	Port  string
-	DBUrl string
+	Env       string
+	Port      string
+	DBUrl     string
+	JWTSecret string
 }
 
 func Load() (*Config, error) {
@@ -22,8 +23,9 @@ func Load() (*Config, error) {
 	dbUrl := fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"))
 
 	return &Config{
-		Env:   os.Getenv("ENV"),
-		Port:  os.Getenv("PORT"),
-		DBUrl: dbUrl,
+		Env:       os.Getenv("ENV"),
+		Port:      os.Getenv("PORT"),
+		DBUrl:     dbUrl,
+		JWTSecret: os.Getenv("JWT_SECRET"),
 	}, nil
 }
