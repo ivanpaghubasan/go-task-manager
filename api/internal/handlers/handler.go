@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"go-task-manager-api/internal/auth"
 	"go-task-manager-api/internal/service"
 	"net/http"
 
@@ -8,14 +9,14 @@ import (
 )
 
 type Handlers struct {
-	User UserHandler
-    Task TaskHandler
+	User *UserHandler
+	Task *TaskHandler
 }
 
-func New(service service.Service) Handlers {
-	return Handlers{
-		User: UserHandler{service: service.User},
-        Task: TaskHandler{service: service.Task},
+func New(service *service.Service, jwt *auth.JWTManager) *Handlers {
+	return &Handlers{
+		User: NewUserHandler(service.User, jwt),
+		Task: NewTaskHandler(service.Task),
 	}
 }
 

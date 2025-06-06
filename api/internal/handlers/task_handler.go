@@ -14,6 +14,10 @@ type TaskHandler struct {
 	service *service.TaskService
 }
 
+func NewTaskHandler(service *service.TaskService) *TaskHandler {
+	return &TaskHandler{service}
+}
+
 type TaskPayload struct {
 	UserID      int        `json:"user_id"`
 	Title       string     `json:"title"`

@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"go-task-manager-api/internal/auth"
 	"go-task-manager-api/internal/model"
 	"go-task-manager-api/internal/service"
 	"net/http"
@@ -10,6 +11,14 @@ import (
 
 type UserHandler struct {
 	service *service.UserService
+	jwt     *auth.JWTManager
+}
+
+func NewUserHandler(service *service.UserService, jwt *auth.JWTManager) *UserHandler {
+	return &UserHandler{
+		service: service,
+		jwt:     jwt,
+	}
 }
 
 type RegisterPayload struct {
