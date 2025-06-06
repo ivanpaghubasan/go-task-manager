@@ -4,4 +4,6 @@ bin/
 
 internal/config/*.env
 
+.env
 
+*.env
