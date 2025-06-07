@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"go-task-manager-api/internal/model"
+	"go-task-manager/internal/model"
 
 	"github.com/jmoiron/sqlx"
 )

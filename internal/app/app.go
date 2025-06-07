@@ -1,10 +1,10 @@
 package app
 
 import (
-	"go-task-manager-api/internal/auth"
-	"go-task-manager-api/internal/config"
-	"go-task-manager-api/internal/repository"
-	"go-task-manager-api/internal/service"
+	"go-task-manager/internal/auth"
+	"go-task-manager/internal/config"
+	"go-task-manager/internal/repository"
+	"go-task-manager/internal/service"
 
 	"github.com/jmoiron/sqlx"
 )

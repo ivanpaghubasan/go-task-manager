@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"go-task-manager-api/internal/app"
-	"go-task-manager-api/internal/config"
-	"go-task-manager-api/internal/router"
+	"go-task-manager/internal/app"
+	"go-task-manager/internal/config"
+	"go-task-manager/internal/router"
 	"log"
 
 	"github.com/jmoiron/sqlx"
@@ -29,5 +29,5 @@ func main() {
 	}
 
 	r := router.SetupRouter(application)
-	_ = r
+	r.Run(fmt.Sprintf(":%s", cfg.Port))
 }

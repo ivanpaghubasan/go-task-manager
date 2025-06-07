@@ -1,16 +1,14 @@
 package router
 
 import (
-	"fmt"
-	"go-task-manager-api/internal/app"
-	"go-task-manager-api/internal/handlers"
-	"go-task-manager-api/internal/middleware"
-	"net/http"
+	"go-task-manager/internal/app"
+	"go-task-manager/internal/handlers"
+	"go-task-manager/internal/middleware"
 
 	"github.com/gin-gonic/gin"
 )
 
-func SetupRouter(app *app.Application) http.Handler {
+func SetupRouter(app *app.Application) *gin.Engine {
 	handler := handlers.New(app.Service, app.JWTManager)
 	authMiddlerware := middleware.JWTAuthMiddleware(app.JWTManager)
 
@@ -30,6 +28,5 @@ func SetupRouter(app *app.Application) http.Handler {
 		}
 	}
 
-	r.Run(fmt.Sprintf(":%s", app.Config.Port))
-	return r.Handler()
+	return r
 }

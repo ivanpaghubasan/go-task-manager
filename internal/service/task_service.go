@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
-	"go-task-manager-api/internal/model"
-	"go-task-manager-api/internal/repository"
+	"go-task-manager/internal/model"
+	"go-task-manager/internal/repository"
 )
 
 type TaskService struct {

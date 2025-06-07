@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"go-task-manager-api/internal/auth"
+	"go-task-manager/internal/auth"
 	"net/http"
 	"strings"
 

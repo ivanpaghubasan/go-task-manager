@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"go-task-manager-api/internal/model"
-	"go-task-manager-api/internal/service"
+	"go-task-manager/internal/model"
+	"go-task-manager/internal/service"
 	"net/http"
 	"strconv"
 	"time"

@@ -1,6 +1,6 @@
 package service
 
-import "go-task-manager-api/internal/repository"
+import "go-task-manager/internal/repository"
 
 type Service struct {
 	User *UserService

@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"go-task-manager-api/internal/auth"
-	"go-task-manager-api/internal/service"
+	"go-task-manager/internal/auth"
+	"go-task-manager/internal/service"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

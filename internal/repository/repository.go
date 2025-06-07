@@ -2,7 +2,7 @@ package repository
 
 import (
 	"context"
-	"go-task-manager-api/internal/model"
+	"go-task-manager/internal/model"
 	"time"
 
 	"github.com/jmoiron/sqlx"
