@@ -6,14 +6,23 @@ import (
 	"go-task-manager/internal/repository"
 )
 
-type UserService struct {
+type UserService interface {
+	CreateUser(ctx context.Context, user *model.User) error
+	GetUserByEmail(ctx context.Context, email string) (*model.User, error)
+}
+
+type userService struct {
 	repo repository.Repository
 }
 
-func (s *UserService) CreateUser(ctx context.Context, user *model.User) error {
+func NewUserService(repo repository.Repository) UserService {
+	return &userService{repo}
+}
+
+func (s *userService) CreateUser(ctx context.Context, user *model.User) error {
 	return s.repo.User.Create(ctx, user)
 }
 
-func (s *UserService) GetUserByEmail(ctx context.Context, email string) (*model.User, error) {
+func (s *userService) GetUserByEmail(ctx context.Context, email string) (*model.User, error) {
 	return s.repo.User.GetUserByEmail(ctx, email)
 }

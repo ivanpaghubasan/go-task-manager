@@ -9,10 +9,12 @@ import (
 )
 
 func SetupRouter(app *app.Application) *gin.Engine {
-	handler := handlers.New(app.Service, app.JWTManager)
+	handler := handlers.New(*app.Service, *app.JWTManager)
 	authMiddlerware := middleware.JWTAuthMiddleware(app.JWTManager)
 
 	r := gin.Default()
+	r.GET("/", handler.IndexPage)
+
 	v1Route := r.Group("/v1")
 	{
 		v1Route.GET("/health", handler.Health)

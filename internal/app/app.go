@@ -12,7 +12,7 @@ import (
 type Application struct {
 	Config     *config.Config
 	Service    *service.Service
-	JWTManager *auth.JWTManager
+	JWTManager auth.IJWTManger
 }
 
 func New(db *sqlx.DB, cfg *config.Config) (*Application, error) {

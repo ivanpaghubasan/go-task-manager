@@ -7,6 +7,10 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
+type IJWTManger interface {
+	GenerateToken(userID int) (string, error)
+	ParseToken(tokenStr string) (*Claims, error)
+}
 type JWTManager struct {
 	secretKey string
 }
@@ -16,7 +20,7 @@ type Claims struct {
 	jwt.RegisteredClaims
 }
 
-func NewJWTManager(secret string) *JWTManager {
+func NewJWTManager(secret string) IJWTManger {
 	return &JWTManager{secretKey: secret}
 }
 
