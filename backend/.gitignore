@@ -1,0 +1,9 @@
+go.sum
+
+bin/
+
+internal/config/*.env
+
+.env
+
+*.env
